@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <table>
-  <tr>
-    % for c in list_of_cols:
-    <th>${c}</th>
+  <thead>
+    <tr>
+      % for c in list_of_cols:
+      <th>${c}</th>
+      % endfor
+    </tr>
+  </thead>
+  <tbody>
+    % for k, element in enumerate(list_of_dicts):
+    <tr>
+      % for c in list_of_cols:
+      <th>${element[c]}</th>
+      % endfor
+    </tr>
     % endfor
-  </tr>
-
-  % for k, element in enumerate(list_of_dicts):
-  <tr>
-    % for c in list_of_cols:
-    <th>${element[c]}</th>
-    % endfor
-  </tr>
-  % endfor
-
+  </tbody>
 </table>

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <table>
-    <!-- Add python code here to iterate over the lenght of the dict_list so its scalable -->
-    <tr>
-      <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
-    </tr>
-    
-  </table>
+  <tr>
+    % for c in list_of_cols:
+    <th>${c}</th>
+    % endfor
+  </tr>
+
+  % for k, element in enumerate(list_of_dicts):
+  <tr>
+    % for c in list_of_cols:
+    <th>${element[c]}</th>
+    % endfor
+  </tr>
+  % endfor
+
+</table>

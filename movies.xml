@@ -4,18 +4,20 @@
         <title>ABC</title>
         <director>gsdf</director>
         <year>1532</year>
-
+        <rating>1</rating>
     </movie>
     <movie>
         <title>NJF</title>
         <director>rtw</director>
         <year>535</year>
+        <rating>5</rating>
 
     </movie>
     <movie>
         <title>MKA</title>
         <director>jghowur</director>
         <year>7643</year>
+        <rating>2</rating>
 
     </movie>
 

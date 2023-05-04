@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<table>
+  <thead>
+    <tr>
+      % for c in list_of_cols:
+      <th>${c}</th>
+      % endfor
+    </tr>
+  </thead>
+  <tbody>
+    % for movie in movies:
+    <tr>
+      <th>${movie.find("title").text}</th>
+      <th>${movie.find("director").text}</th>
+      <th>${movie.find("year").text}</th>
+      <th>${movie.find("rating").text}</th>
+      
+    </tr>
+    % endfor
+  </tbody>
+</table>

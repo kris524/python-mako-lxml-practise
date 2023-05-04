@@ -42,4 +42,6 @@ data = [
 
 result = mytemplate2.render(books=data)
 
-print(result)
+with open("output.xml", "w") as f:
+    f.write(result)
+

@@ -4,11 +4,12 @@ from lxml import etree
 
 doc = etree.parse("top_langs.xml")
 
-language = doc.findall("language")
-
-print(language)
+languages = doc.findall("language")
 
 
+mytemplate = Template(filename="report_template.html")
 
-with open("output3.html", "w") as f:
+res = mytemplate.render(languages=languages)
+
+with open("lang_report.html", "w") as f:
     f.write(res)

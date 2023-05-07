@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009/index.xsd">
+    <spirit:vendor>example_vendor</spirit:vendor>
+    <spirit:library>example_library</spirit:library>
+    <spirit:name>simple_32bit_adder</spirit:name>
+    <spirit:version>1.0</spirit:version>
+    <spirit:description>Simple 32-bit adder</spirit:description>
+    <spirit:busInterfaces>
+        <spirit:busInterface>
+            <spirit:name>adder_input_A</spirit:name>
+            <spirit:busType spirit:vendor="example_vendor" spirit:library="example_library" spirit:name="input" spirit:version="1.0"/>
+            <spirit:abstractionTypes>
+                <spirit:abstractionType>
+                    <spirit:abstractionRef spirit:vendor="example_vendor" spirit:library="example_library" spirit:name="input_abstraction" spirit:version="1.0"/>
+                </spirit:abstractionType>
+            </spirit:abstractionTypes>
+            <spirit:portMaps>
+                <spirit:portMap>
+                    <spirit:logicalPort>
+                        <spirit:name>input_A</spirit:name>
+                    </spirit:logicalPort>
+                    <spirit:physicalPort>
+                        <spirit:name>input_A_port</spirit:name>
+                    </spirit:physicalPort>
+                </spirit:portMap>
+            </spirit:portMaps>
+        </spirit:busInterface>
+        <!-- Add more bus interfaces for input_B, output, and clk -->
+    </spirit:busInterfaces>
+    <spirit:model>
+        <spirit:views>
+            <spirit:view>
+                <spirit:name>rtl</spirit:name>
+                <spirit:envIdentifier>VERILOG</spirit:envIdentifier>
+                <spirit:fileSetRef>
+                    <spirit:localName>rtl_files</spirit:localName>
+                </spirit:fileSetRef>
+            </spirit:view>
+        </spirit:views>
+        <spirit:fileSets>
+            <spirit:fileSet>
+                <spirit:name>rtl_files</spirit:name>
+                <spirit:file>
+                    <spirit:name>simple_32bit_adder.v</spirit:name>
+                    <spirit:fileType>verilogSource</spirit:fileType>
+                </spirit:file>
+            </spirit:fileSet>
+        </spirit:fileSets>
+    </spirit:model>
+</spirit:component>

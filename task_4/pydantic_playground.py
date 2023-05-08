@@ -22,7 +22,9 @@ class User(BaseModel):
     @classmethod
     def validate_name(cls, name):
         if name.islower():
-            raise ValueError(f"The name needs to start with a capital letter, name given: {name}")
+            raise ValueError(
+                f"The name needs to start with a capital letter, name given: {name}"
+            )
         else:
             return name
 
@@ -36,16 +38,12 @@ class User(BaseModel):
 
 
 def validator(data):
+    res = []
     for entry in data:
-        
-        User(
-            name=entry["name"],
-            email=entry["email"],
-            age=entry["age"],
-            city=entry["city"],
-        )
+        res.append(User(**entry))
 
     print("EVERYTHING IS VALID")
+    print("result:", res)
 
 
 if __name__ == "__main__":

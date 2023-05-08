@@ -12,14 +12,15 @@
     "city": "Los Angeles"
   },
   {
-    "name": "Jane Smith",
-    "email": "jane.smith@example.com",
-    "age": 25,
-    "city": "Los Angeles"
+    "name": "ASD VDS",
+    "email": "asd.vds@example.com",
+    "age": 24,
+    "city": "Los Santos"
   },
   {
-    "name": 345,
-    "email": 123,
-    "age": "ads"
+    "name": "Ffdv",
+    "email": "asd.vds@example.com",
+    "age": 24,
+    "city": "Los Santos"
   }
 ]

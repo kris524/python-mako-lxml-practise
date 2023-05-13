@@ -18,19 +18,19 @@ class Shape(Protocol):
 
 
 class Rectangle:
-    def __init__(self, a, b):
+    def __init__(self, a: float, b: float):
         self.a = a
         self.b = b
 
     def area(self) -> int:
         return self.a * self.b
 
-    def perimiter(self) -> float:
+    def perimiter(self) -> int:
         return 2 *  (self.a + self.b)
 
 
 class Circle:
-    def __init__(self, a):
+    def __init__(self, a: float):
         self.a = a
 
     def area(self) -> int:

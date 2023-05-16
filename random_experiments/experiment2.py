@@ -13,7 +13,7 @@ class Shape(Protocol):
     def area(self) -> float:
         pass
 
-    def perimiter(self)-> float:
+    def perimiter(self) -> float:
         pass
 
 
@@ -22,11 +22,11 @@ class Rectangle:
         self.a = a
         self.b = b
 
-    def area(self) -> int:
+    def area(self) -> float:
         return self.a * self.b
 
-    def perimiter(self) -> int:
-        return 2 *  (self.a + self.b)
+    def perimiter(self) -> float:
+        return 2 * (self.a + self.b)
 
 
 class Circle:
@@ -43,12 +43,14 @@ class Circle:
 def calculate_area(shape: Shape) -> float:
     return shape.area()
 
+
 def calculate_peremiter(shape: Shape) -> float:
     return shape.perimiter()
+
 
 if __name__ == "__main__":
     cir = Circle(2)
     print(calculate_area(cir))
 
-    rec = Rectangle(1,2)
+    rec = Rectangle(1, 2)
     print(calculate_peremiter(rec))

@@ -4,6 +4,7 @@ from typing import List
 from mako.template import Template
 from lxml import html
 
+
 class ProcessStep:
     def __init__(self, id: int, step_descirption: str, parameters: List[str]):
         self.id = id
@@ -49,12 +50,12 @@ def generate_html(foundry):
     <body>
         The processes in the foundry are: <br>
         % for process in foundry:
-            Process ID: ${process.id}
-            Process description: ${process.description}
+            <h2>Process ID: ${process.id}</h2>
+            <p>Process description: ${process.description}</p>
         <ul>
             % for p_step in process:
-            <li>${p_step.id}</li>
-            <li>${p_step.step_descirption}</li>
+            <h2>${p_step.id}</h2>
+            <p>${p_step.step_descirption}</p>
             <li>${p_step.parameters}</li>
             % endfor
         </ul>
@@ -68,6 +69,19 @@ def generate_html(foundry):
 def verify_html_contents(html_res, foundry):
     tree = html.fromstring(html_res)
     assert tree.xpath("//head/title/text()")[0] == f"Foundry: {foundry.name}"
+
+    for index, process in enumerate(foundry):
+        print(tree.xpath(f"//body/h2[{index+1}]/text()")[0])
+
+        assert (
+            tree.xpath(f"//body/h2[{index+1}]/text()")[0] == f"Process ID: {process.id}"
+        )
+
+        print(tree.xpath(f"//body/p[{index+1}]/text()")[0])
+        assert (
+            tree.xpath(f"//body/p[{index+1}]/text()")[0]
+            == f"Process description: {process.description}"
+        )
 
 
 if __name__ == "__main__":
@@ -97,5 +111,3 @@ if __name__ == "__main__":
     res = generate_html(tsmc)
 
     verify_html_contents(res, tsmc)
-
-

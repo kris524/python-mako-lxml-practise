@@ -43,14 +43,14 @@ def generate_html(foundry):
     <html lang="en">
 
     <head>
-        Foundry: ${foundry.name}
+        Foundry: ${foundry.name} <br>
     </head>
 
     <body>
-        The processes in the foundry are:
+        The processes in the foundry are: <br>
         % for process in foundry:
-        Process ID: ${process.id}
-        Process description: ${process.description}
+            Process ID: ${process.id}
+            Process description: ${process.description}
         <ul>
             % for p_step in process:
             <li>${p_step.id}</li>

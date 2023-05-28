@@ -86,6 +86,10 @@ def verify_html_contents(html_res, foundry):
             == f"Process description: {process.description}"
         )
         #TODO: Fix iteration of process steps
+        # for index, step in enumerate(process, start=1):
+        #     step_xpath = "//body/ul"
+        #     print(tree.xpath(f'{step_xpath}/h2[{index}]/text()')[0])
+            # assert tree.xpath(f'{step_xpath}/h2[{index}]/text()')[0] == step.id
 
 if __name__ == "__main__":
     tsmc = Foundry("TSMC")

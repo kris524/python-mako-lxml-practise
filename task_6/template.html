@@ -7,7 +7,15 @@
 
 <body>
     The processes in the foundry are:
+    % for process in foundry:
+    Process ID: ${process.id}
+    Process description: ${process.description}
     <ul>
-        % for p in foundry
+        % for p_step in process:
+        <li>${p_step.id}</li>
+        <li>${p_step.step_descirption}</li>
+        <li>${p_step.parameters}</li>
+        % endfor
     </ul>
+    % endfor
 </body>

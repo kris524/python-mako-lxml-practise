@@ -69,8 +69,11 @@ def generate_html(foundry):
 def verify_html_contents(html_res, foundry):
     tree = html.fromstring(html_res)
     assert tree.xpath("//head/title/text()")[0] == f"Foundry: {foundry.name}"
-
+    limit = -3
     for index, process in enumerate(foundry):
+        k=0
+        limit+=3
+        
         print(tree.xpath(f"//body/h2[{index+1}]/text()")[0])
 
         assert (
@@ -82,7 +85,7 @@ def verify_html_contents(html_res, foundry):
             tree.xpath(f"//body/p[{index+1}]/text()")[0]
             == f"Process description: {process.description}"
         )
-
+        #TODO: Fix iteration of process steps
 
 if __name__ == "__main__":
     tsmc = Foundry("TSMC")

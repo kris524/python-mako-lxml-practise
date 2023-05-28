@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from collections.abc import Iterable
 from typing import List
+from mako.template import Template
 
 class ProcessStep:
     def __init__(self, id: int, step_descirption: str, parameters: List[str]):
@@ -36,6 +37,18 @@ class Foundry(Iterable):
     def __iter__(self):
         return iter(self.processes)
 
+def generate_html(foundry):
+    template = Template("""
+    <html>
+    <head>
+    Foundry: ${foundry.name}
+    </head>    
+    <body>
+
+    </body>
+    
+    """)
+    return template.render()
 
 
 if __name__ == "__main__":
@@ -50,5 +63,5 @@ if __name__ == "__main__":
     process.add_step(process_step_2)
     process.add_step(process_step_3)
 
+    tsmc.add_process(process)
 
-    tsmc.add_process("")

@@ -16,7 +16,7 @@ attributes = ["library", "vendor", "version", "name"]
 res_attr = []
 for attr in attributes:
     via_attributes = doc.xpath(f"//@spirit:{attr}", namespaces=ns)
-    res_attr.append(via_attributes)
+    res_attr.append(via_attributes[0])
 
 res_dict = dict(zip(attributes, res_attr))
 
@@ -29,8 +29,18 @@ direct_access_name = doc.xpath("//spirit:name/text()", namespaces=ns)
 
 logical_name = doc.xpath("//spirit:logicalName/text()", namespaces=ns)
 
+# Wildcard usage, only get vendorExtensions inside ports, total is 10 but we only get 9
+clock_enable = doc.xpath(
+    "//spirit:ports/spirit:port/spirit:vendorExtensions/*", namespaces=ns
+)
 
-clock_enable = doc.xpath("//spirit:ports/spirit:port/spirit:vendorExtensions", namespaces=ns)
+# One way to do it, a bit longer and needs to dig a bit in the xml
+requires_driver: List[str] = doc.xpath("//spirit:ports/spirit:port/spirit:wire/spirit:requiresDriver/@spirit:driverType", namespaces=ns)
+
+# Second way much quicker
+# requires_driver = doc.xpath("//spirit:requiresDriver/@spirit:driverType", namespaces=ns)
+
+
 if __name__ == "__main__":
     print(res_dict)
     for key, value in res_dict.items():
@@ -41,6 +51,11 @@ if __name__ == "__main__":
     print(direct_access_version)
     print(direct_access_name)
 
-    print(logical_name[0])
+    print("Logical name first one: ", logical_name[0])
 
-    print(len(clock_enable))
+    for c in clock_enable:
+        print(c.text)
+
+    print(requires_driver)
+
+    

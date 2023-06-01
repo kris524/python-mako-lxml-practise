@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    Port Data
+</head>
+
+<body>
+
+    % for idx in range(len(port_data.logical_names)):
+    <ul>
+        <li>${port_data.logical_names[idx]}</li>
+        <li>${port_data.desc[idx]}</li>
+        <li>${port_data.presence[idx]}</li>
+        <li>${port_data.direction[idx]}</li>
+        <li>${port_data.width_res[idx]}</li>
+    </ul>
+    % endfor
+
+
+</body>
